@@ -40,7 +40,7 @@ class VagmClient
     public function __construct()
     {
         $this->config = config('vagm');
-        $this->token = self::getToken() ?? null;
+        $this->token = VagmApi::getToken() ?? null;
         $this->client = $this->token
             ? \Http::withToken($this->token)->withHeaders($this->config['headers'])
             : \Http::withHeaders($this->config['headers']);
